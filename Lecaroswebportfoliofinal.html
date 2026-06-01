@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Earl Kenneth E. Lecaros</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #8a8a7a;
+      color: #fff;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+  
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 50px;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      position: sticky;
+      top: 0;
+      background: #8a8a7a;
+      z-index: 99;
+    }
+    nav .logo { font-family: 'Playfair Display', serif; font-size: 20px; letter-spacing: 2px; }
+    nav ul { list-style: none; display: flex; gap: 28px; }
+    nav ul li a { font-size: 14px; transition: opacity 0.2s; }
+    nav ul li a:hover { opacity: 0.6; }
+    nav ul li a.active { text-decoration: underline; text-underline-offset: 4px; }
+
+    #burger { font-size: 24px; cursor: pointer; user-select: none; }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: #8a8a7a;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding: 16px 50px;
+      gap: 16px;
+    }
+    .mobile-menu a { font-size: 15px; color: #fff; }
+    .mobile-menu a:hover { opacity: 0.6; }
+    .mobile-menu.open { display: flex; }
+
+   
+    #home {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 80px 50px;
+      min-height: 88vh;
+    }
+    .hero-left { max-width: 480px; }
+    .hero-left .greeting { font-size: 15px; font-weight: 300; margin-bottom: 14px; opacity: 0.85; }
+    .hero-left h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 50px;
+      line-height: 1.1;
+      text-transform: uppercase;
+      margin-bottom: 30px;
+    }
+    .buttons { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 28px; }
+    .btn {
+      padding: 11px 24px;
+      border-radius: 50px;
+      border: 1.5px solid #fff;
+      font-size: 14px;
+      cursor: pointer;
+      background: transparent;
+      color: #fff;
+      transition: all 0.2s;
+    }
+    .btn:hover { background: #fff; color: #222; }
+    .socials { display: flex; gap: 10px; }
+    .socials img { width: 34px; height: 34px; border-radius: 8px; }
+
+
+    .resume-card {
+      background: #000000;
+      border-radius: 12px;
+      width: 210px;
+      height: 270px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      padding: 24px;
+    }
+
+
+    hr { border: none; border-top: 1px solid rgba(255,255,255,0.2); margin: 0 50px; }
+
+ 
+    #about {
+      display: flex;
+      padding: 70px 50px;
+      gap: 0;
+    }
+    .about-col {
+      flex: 1;
+      padding-right: 50px;
+      border-right: 1px solid rgba(255,255,255,0.2);
+    }
+    .skills-col { flex: 1; padding-left: 50px; }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 34px;
+      text-transform: uppercase;
+      text-decoration: underline;
+      text-underline-offset: 6px;
+      margin-bottom: 28px;
+    }
+
+
+    .photo-box {
+      width: 110px;
+      height: 110px;
+      background: #fff;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 42px;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+
+    
+    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 30px; }
+    .skill p { font-size: 14px; margin-bottom: 7px; }
+    .bar { height: 10px; background: rgba(255,255,255,0.15); border-radius: 50px; overflow: hidden; }
+    .bar .fill { height: 100%; background: #2c2c2c; border-radius: 50px; }
+
+
+    #portfolio { padding: 70px 50px; }
+    #portfolio h2 { text-decoration: none; font-size: 38px; margin-bottom: 36px; text-align: center; }
+    .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .card { background: rgba(255,255,255,0.08); border-radius: 10px; overflow: hidden; }
+
+   
+    .card-img {
+      width: 100%;
+      height: 190px;
+      background: rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      opacity: 0.4;
+      letter-spacing: 1px;
+    }
+    .card p { padding: 14px; font-size: 14px; }
+
+
+    #experience {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      padding: 0 50px 70px;
+      gap: 0;
+    }
+    .exp-col { padding: 0 30px; border-right: 1px solid rgba(255,255,255,0.2); }
+    .exp-col:first-child { padding-left: 0; }
+    .exp-col:last-child { border-right: none; }
+    .exp-col h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      text-transform: uppercase;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      margin-bottom: 18px;
+    }
+    .exp-lines { display: flex; flex-direction: column; gap: 12px; }
+    .exp-lines span { display: block; height: 2px; background: rgba(255,255,255,0.3); border-radius: 4px; }
+
+
+    footer {
+      background: #1a1a1a;
+      padding: 40px 50px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 30px;
+    }
+    footer .logo { font-family: 'Playfair Display', serif; font-size: 20px; margin-bottom: 12px; }
+    footer .flinks { display: flex; flex-direction: column; gap: 6px; }
+    footer .flinks a { font-size: 13px; opacity: 0.6; }
+    footer .flinks a:hover { opacity: 1; }
+    footer h4 { font-size: 13px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.6; margin-bottom: 14px; }
+    footer .socials { display: flex; gap: 10px; }
+    footer .socials img { width: 30px; height: 30px; border-radius: 6px; }
+    footer .contact-lines { display: flex; flex-direction: column; gap: 10px; }
+    footer .contact-lines span { display: block; height: 2px; background: rgba(255,255,255,0.2); border-radius: 4px; width: 80%; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">LOGO</div>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#about">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#portfolio" class="active">Portfolio</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <span id="burger" onclick="toggleMenu()">&#9776;</span>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home"       onclick="toggleMenu()">Home</a>
+    <a href="#about"      onclick="toggleMenu()">About</a>
+    <a href="#about"      onclick="toggleMenu()">Skills</a>
+    <a href="#experience" onclick="toggleMenu()">Experience</a>
+    <a href="#portfolio"  onclick="toggleMenu()">Portfolio</a>
+    <a href="#contact"    onclick="toggleMenu()">Contact</a>
+  </div>
+
+  <section id="home">
+    <div class="hero-left">
+      <p class="greeting">Hi, I'm Earl Kenneth E. Lecaros</p>
+      <h1>Communicator &<br>Creative Problem Solver</h1>
+      <div class="buttons">
+        <a href="#portfolio" class="btn">View my work</a>
+        <a href="#" class="btn">Download Resume</a>
+      </div>
+      <div class="socials">
+        <a href="#"><img src="Gmail-Logo-2013.png">
+        <a href="#"><img src="instalogo.jpeg" >
+        <a href="#"><img src="linklogo.png" alt="Gmail"></a>
+      </div>
+    </div>
+
+    <div class="resume-card">
+      <img src = "Resume.png" style ="width: 300px; height: 600px; object-fit:cover; border-radius:6px;">
+      
+      <div class="lines">
+        <span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+  <section id="about">
+    <div class="about-col">
+      <h2>About Me</h2>
+      
+      <img src="Lecarospfp.jpg" style = "width: 110px; height:110px; object-fit:cover;border-radius:6px;">
+      <p style="opacity:0.7; font-size:14px; line-height:1.7; margin-bottom:20px;">
+        Hi! I'm Earl Kenneth E. Lecaros, a BSIT student with a passion for technology, web development, 
+        and learning new skills in the field of Information Technology.
+         I enjoy creating websites, exploring different software tools, and improving my knowledge through hands-on projects. 
+         In my free time, I like playing games, browsing the internet, and staying updated with the latest tech trends.
+          My goal is to continuously grow as an IT professional and use my skills to create useful and innovative solutions.
+      </p>
+      <a href="#" class="btn" style="font-size:13px; padding:10px 20px;">Learn More About Me</a>
+    </div>
+
+    <div class="skills-col">
+      <h2>My Skills</h2>
+      <div class="skills-grid">
+        <div class="skill">
+          <p>Communication</p>
+          <div class="bar"><div class="fill" style="width:70%"></div></div>
+        </div>
+        <div class="skill">
+          <p>Content Writing</p>
+          <div class="bar"><div class="fill" style="width:60%"></div></div>
+        </div>
+        <div class="skill">
+          <p>Research & Analysis</p>
+          <div class="bar"><div class="fill" style="width:65%"></div></div>
+        </div>
+        <div class="skill">
+          <p>Creativity</p>
+          <div class="bar"><div class="fill" style="width:75%"></div></div>
+        </div>
+        <div class="skill">
+          <p>Teamwork</p>
+          <div class="bar"><div class="fill" style="width:80%"></div></div>
+        </div>
+        <div class="skill">
+          <p>Empathy & Advocacy</p>
+          <div class="bar"><div class="fill" style="width:55%"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+  <section id="portfolio">
+    <h2>My Portfolio / Projects</h2>
+    <div class="portfolio-grid">
+
+      <div class="card">
+
+
+        <img src = "James sapphire 1.jfif" style = "width:100%; height: 190px; object-fit: cover;">
+        <p>True adam 1</p>
+      </div>
+
+      <div class="card">
+       <img src = "James sapphire 2.png" style = "width:100%; height: 190px; object-fit: cover;">
+        <p>True adam 2</p>
+      </div>
+
+      <div class="card">
+      <img src = "James sapphire 3.png" style = "width:100%; height: 190px; object-fit: cover;">
+        <p>True adam 3</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="exp-col">
+      <h3>Experience</h3>
+      <div class="exp-lines">
+        <div class="lines">
+  <p>BSIT Student</p>
+  <p>Web Developer</p>
+  <p>Creative Problem Solver</p>
+  
+</div>
+      </div>
+    </div>
+    <div class="exp-col">
+      <h3>Education</h3>
+      <div class="exp-lines">
+ <p> University of St Lasalle 2023-2026</p>
+      </div>
+    </div>
+    <div class="exp-col">
+      <h3>Tools I Use</h3>
+      <div class="exp-lines">
+<p> Canvas </p>
+<p> Figma </p>
+<p> AdobePhotoshop </p>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div>
+      <div class="logo">LOGO</div>
+      <div class="flinks">
+        <a href="#">Looksmaxx</a>
+        <a href="#">Agartha</a>
+        <a href="#">Professor yakob</a>
+      </div>
+    </div>
+    <div>
+      <h4>Contacts</h4>
+      <div class="socials">
+        <a href="#"><img src="Linklogo.png">
+        <a href="#"><img src="Gmail-Logo-2013.png"> 
+        <a href="#"><img src="instalogo.jpeg"> 
+      </div>
+    </div>
+    <div>
+      <h4>Contact Info</h4>
+      <div class="contact-lines">
+  <P> Earlisgwapo@gmail.com</P>
+  <P> #0967676767</P>
+<P> Sigmawolf.com</P>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
